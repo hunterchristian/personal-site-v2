@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+
+  <title>Svelte app</title>
+
+  <link rel='icon' type='image/png' href='/favicon.png'>
+  <link rel='stylesheet' href='/global.css'>
+  <link rel='stylesheet' href='/build/bundle.css'>
+
+  <link rel="preload" as="image" href="images/bliss.png">
+  <link rel="preload" as="image" href="images/start-inactive.png">
+  <link rel="preload" as="image" href="images/start-hover.png">
+  <link rel="preload" as="image" href="images/start-active.png">
+  <link rel="preload" as="image" href="images/twitter-logo.png">
+  <link rel="preload" as="image" href="images/0.jpeg">
+  <link rel="preload" as="font" href="fonts/ClassicDesktop.ttf">
+  <link rel="preload" href="https://web.archive.org/web/20011201082439/http://www.google.com/" as="document">
+
+  <script defer src='/build/bundle.js'></script>
+</head>
+
+<body>
+  <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  <script async defer>
+    (function (a) {
+      var options = {
+        // What to collect
+        outbound: true,
+        emails: true,
+        downloads: true,
+        // Downloads: enter file extensions you want to collect
+        downloadsExtensions: ["pdf", "csv", "docx", "xlsx"],
+
+        // All: use title attribute if set for event name (for all events)
+        // THIS TAKES PRECEDENCE OVER OTHER SETTINGS BELOW
+        title: true,
+        // Outbound: use full URL of the links? false for just the hostname
+        outboundFullUrl: true,
+        // Downloads: if taking event name from URL, use full URL or just filename (default)
+        downloadsFullUrl: true,
+      };
+
+      function b() { try { for (var b, e = document.getElementsByTagName("a"), f = 0; f < e.length; f++)if (b = e[f], !b.getAttribute("onclick")) { var g; if (d.downloads && /^https?:\/\//i.test(b.href) && new RegExp(".(" + (d.downloadsExtensions || []).join("|") + ")", "i").test(b.pathname) ? g = "download" : d.outbound && /^https?:\/\//i.test(b.href) && b.hostname !== a.location.hostname ? g = "outbound" : d.emails && /^mailto:/i.test(b.href) && (g = "email"), g) var h = "saAutomatedLink(this, '" + g + "');"; b.hasAttribute("target") && "_self" !== b.hasAttribute("target") || (h += " return false;"), b.setAttribute("onclick", h) } } catch (a) { c(a.message, "warn") } } if ("undefined" != typeof a) { var c = function (a, b) { var c = "warn" === b ? console.warn : console.log; return c("Simple Analytics automated events: " + a) }, d = options; "undefined" == typeof d && c("options object not found, please specify", "warn"), a.saAutomatedLink = function (b, e) { try { if (!b) return c("no element found"); var f = !1, g = function () { f || b.hasAttribute("target") || (document.location = b.getAttribute("href")), f = !0 }; if (a.sa_event) { var h = b.hostname, i = b.pathname, j = !1; if (d.title && b.hasAttribute("title")) { var k = b.getAttribute("title").trim(); "" != k && (j = !0) } var l; if (j) l = k; else switch (e) { case "outbound": { l = h + (d.outboundFullUrl ? i : ""); break } case "download": { l = d.downloadsFullUrl ? h + i : i.split("/").pop(); break } case "email": { var m = b.getAttribute("href"); l = (m.split(":")[1] || "").split("?")[0]; break } }var n = e + "_" + l.replace(/[^a-z0-9]+/gi, "_").replace(/(^_+|_+$)/g, ""); return sa_event(n, g), c("collected " + n), a.setTimeout(g, 5e3) } return c("sa_event is not defined", "warn"), g() } catch (a) { c(a.message, "warn") } }, a.addEventListener("DOMContentLoaded", b) }
+    })(window);
+  </script>
+  <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" /></noscript>
+</body>
+
+</html>
