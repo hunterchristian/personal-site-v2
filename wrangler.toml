@@ -1,0 +1,12 @@
+name = "personal-site-v2"
+type = "webpack"
+account_id = "88af7e46e0143c6510c9d7b3d09161d9"
+workers_dev = true
+
+[env.production]
+route = "hunterhodnett.dev/*"
+zone_id = "a7c79d9006b54b1de604cb791a730d3f"
+
+[site]
+bucket = "./public"
+entry-point = "workers-site"
