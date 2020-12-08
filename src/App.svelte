@@ -1,4 +1,24 @@
-.screen {
+<script lang="ts">
+	export let name: string;
+</script>
+
+<div class="container">
+  <div class="screen">
+    <div class="taskbar">
+      <div class="main-section">
+        <input id="start-menu-active" type="checkbox" checked />
+        <label class="start-button" for="start-menu-active">
+          start
+        </label>
+          <div class="start-menu-footer"></div>
+      </div>
+      <div class="quick-section"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+	.screen {
   position: relative;
   background: url('../images/bliss.png') center/cover no-repeat #0c8dea;
 }
@@ -43,8 +63,8 @@
 }
 .screen .taskbar .main-section .start-button::before {
   content: '';
-  background: url('http://opi.wiki/pic?w=6&f=108883&e=2&o=703') center/cover
-    no-repeat;
+  /* background: url('http://opi.wiki/pic?w=6&f=108883&e=2&o=703') center/cover
+    no-repeat; */
   position: relative;
   display: inline-block;
   height: 15px;
@@ -455,3 +475,4 @@ body {
   height: 100%;
   font-family: verdana;
 }
+</style>
