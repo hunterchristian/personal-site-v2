@@ -1,6 +1,9 @@
 <script lang="ts">
   import Icon from './Icon.svelte';
 
+
+
+
   function handleDragDrop(e) {
     e.preventDefault();
   }
@@ -18,10 +21,8 @@
     <div class="taskbar">
       <div class="main-section">
         <input id="start-menu-active" type="checkbox" checked />
-        <label class="start-button" for="start-menu-active">
-          start
-        </label>
-          <div class="start-menu-footer"></div>
+        <div class="start-button-image"></div>
+        <div class="start-menu-footer"></div>
       </div>
       <div class="quick-section"></div>
     </div>
@@ -29,6 +30,18 @@
 </div>
 
 <style>
+  .start-button-image {
+    cursor: pointer;
+    width: 97px;
+    height: 30px;
+    background-image: url('/images/start-inactive.png');
+  }
+  .start-button-image:hover {
+    background-image: url('/images/start-hover.png');
+  }
+  .start-button-image:active {
+    background-image: url('/images/start-active.png');
+  }
 	.screen {
   position: relative;
   background: url('../images/bliss.png') center/cover no-repeat #0c8dea;
@@ -62,7 +75,7 @@
   font-size: 18px;
   color: white;
   font-style: italic;
-  padding: 5px 25px 5px 15px;
+  padding: 5px 25px 3px 15px;
   text-shadow: 1px 1px 1px #333;
   border-radius: 0px 10px 15px 0px;
   border: none;
@@ -452,6 +465,9 @@
 }
 .screen .taskbar .main-section #start-menu-active:checked ~ .start-button {
   box-shadow: 0px 0px 15px #333 inset;
+  font-family: ClassicDesktop;
+  font-size: 25px;
+  letter-spacing: -1px;
 }
 .screen .taskbar .main-section #start-menu-active:checked ~ .start-menu {
   display: block;
