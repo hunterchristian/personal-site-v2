@@ -1,9 +1,20 @@
 <script lang="ts">
-	export let name: string;
+  import Icon from './Icon.svelte';
+
+  function handleDragDrop(e) {
+    e.preventDefault();
+  }
 </script>
 
 <div class="container">
-  <div class="screen">
+  <div class="screen" on:drop={handleDragDrop} ondragover="return false">
+    <Icon
+      href="#"
+      iconDesc="Follow me"
+      imageUrl="../images/twitter-logo.png"
+      startingX='2vh'
+      startingY='80vh'
+    /> 
     <div class="taskbar">
       <div class="main-section">
         <input id="start-menu-active" type="checkbox" checked />
