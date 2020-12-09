@@ -36,12 +36,17 @@
 </a>
 
 <style>
+  @font-face{
+    font-family: 'ClassicDesktop';
+    src: url('/fonts/ClassicDesktop.ttf');
+  }
   .icon-desc {
     padding: 1px;
     margin-top: 5px;
     color: white;
     text-shadow: 1px 1px 2px black;
-    font-family: ;
+    font-family: ClassicDesktop;
+    font-size: larger;
   }
   img {
     width: 5vh;
