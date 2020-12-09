@@ -2,6 +2,8 @@
   import Icon from './Icon.svelte';
 
 
+
+
   function handleDragDrop(e) {
     e.preventDefault();
   }
@@ -13,8 +15,8 @@
       href="#"
       iconDesc="Follow me"
       imageUrl="../images/twitter-logo.png"
-      startingX='20px'
-      startingY='50px'
+      startingX='2vh'
+      startingY='80vh'
     /> 
     <div class="taskbar">
       <div class="main-section">

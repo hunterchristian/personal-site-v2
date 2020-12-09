@@ -38,10 +38,15 @@
 <style>
   .icon-desc {
     padding: 1px;
+    margin-top: 5px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    font-family: ;
   }
   img {
     width: 5vh;
     height: 5vh;
+    filter: drop-shadow(1px 1px 2px black);
   }
   a {
     position: fixed;
@@ -55,10 +60,6 @@
     text-decoration: none;
   }
   a:focus .icon-desc {
-    color: white;
     background: steelblue;
-  }
-  a:focus img {
-    filter: grayscale(20%)
   }
 </style>
