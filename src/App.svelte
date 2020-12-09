@@ -1,9 +1,11 @@
 <script lang="ts">
-	export let name: string;
+  import Icon from './Icon.svelte';
+
 </script>
 
 <div class="container">
   <div class="screen">
+    <Icon href="#" iconDesc="Follow me" imageUrl="../images/twitter-logo.png" /> 
     <div class="taskbar">
       <div class="main-section">
         <input id="start-menu-active" type="checkbox" checked />
