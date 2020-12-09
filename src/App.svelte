@@ -1,9 +1,6 @@
 <script lang="ts">
   import Icon from './Icon.svelte';
 
-
-
-
   function handleDragDrop(e) {
     e.preventDefault();
   }
