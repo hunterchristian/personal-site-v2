@@ -1,33 +1,37 @@
 <script lang="ts">
   import Icon from './Icon.svelte';
-
-
-
+import LoadingScreen from './LoadingScreen.svelte';
 
   function handleDragDrop(e) {
     e.preventDefault();
   }
+
+  let loading = true;
+  setTimeout(() => loading = false, 3000);
 </script>
 
-<div class="container">
-  <div class="screen" on:drop={handleDragDrop} ondragover="return false">
-    <Icon
-      href="#"
-      iconDesc="Follow me"
-      imageUrl="../images/twitter-logo.png"
-      startingX='2vh'
-      startingY='80vh'
-    /> 
-    <div class="taskbar">
-      <div class="main-section">
-        <input id="start-menu-active" type="checkbox" checked />
-        <div class="start-button-image"></div>
-        <div class="start-menu-footer"></div>
+  {#if loading}
+    <LoadingScreen />
+  {/if}
+  <div class="container">
+    <div class="screen" on:drop={handleDragDrop} ondragover="return false">
+      <Icon
+        href="#"
+        iconDesc="Follow me"
+        imageUrl="../images/twitter-logo.png"
+        startingX='2vh'
+        startingY='80vh'
+      /> 
+      <div class="taskbar">
+        <div class="main-section">
+          <input id="start-menu-active" type="checkbox" checked />
+          <div class="start-button-image"></div>
+          <div class="start-menu-footer"></div>
+        </div>
+        <div class="quick-section"></div>
       </div>
-      <div class="quick-section"></div>
     </div>
   </div>
-</div>
 
 <style>
   .start-button-image {
