@@ -1,9 +1,11 @@
 <script lang="ts">
+  import OpenUrl from './commands/OpenUrl';
+
   export let href: string;
   export let imageUrl: string;
   export let iconDesc: string;
   export let startingX: string;
-  export let startingY: string; 
+  export let startingY: string;
 
   let xPos = startingX;
   let yPos = startingY;
@@ -14,8 +16,12 @@
     event.preventDefault();
   }
 
+  function handleDblClick() {
+    new OpenUrl().execute({ url: 'https://twitter.com/HunterHodnett' });
+  }
+
   function handleDragStart(e: DragEvent) {
-      e.dataTransfer.dropEffect = "move";
+    e.dataTransfer.dropEffect = 'move';
   }
 
   function handleDragEnd(e: DragEvent) {
@@ -24,19 +30,8 @@
   }
 </script>
 
-<a
-  href={href}
-  on:click={handleClick}
-  on:dragstart={handleDragStart}
-  on:dragend={handleDragEnd}
-  style="top:{yPos};left:{xPos};width:${width};height:${height}"
->
-  <img src={imageUrl} alt={iconDesc} />
-  <span class='icon-desc'>{iconDesc}</span>
-</a>
-
 <style>
-  @font-face{
+  @font-face {
     font-family: 'ClassicDesktop';
     src: url('/fonts/ClassicDesktop.ttf');
   }
@@ -68,3 +63,14 @@
     background: steelblue;
   }
 </style>
+
+<a
+  {href}
+  on:click={handleClick}
+  on:dblclick={handleDblClick}
+  on:dragstart={handleDragStart}
+  on:dragend={handleDragEnd}
+  style="top:{yPos};left:{xPos};width:${width};height:${height}">
+  <img src={imageUrl} alt={iconDesc} />
+  <span class="icon-desc">{iconDesc}</span>
+</a>
