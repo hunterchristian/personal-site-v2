@@ -1,5 +1,6 @@
 <script lang="ts">
   import 'xp.css/dist/XP.css';
+  import BlueScreenError from './BlueScreenError.svelte';
   import Icon from './Icon.svelte';
   import LoadingScreen from './LoadingScreen.svelte';
   import Taskbar from './Taskbar.svelte';
@@ -7,9 +8,22 @@
   function handleDragDrop(e) {
     e.preventDefault();
   }
+  function shouldShowBlueScreenError() {
+    return Math.random() * 10 <= 1;
+  }
 
   let loading = true;
   setTimeout(() => (loading = false), 3000);
+
+  let showBlueScreenError = false;
+  const intervalId = setInterval(() => {
+    let showError = shouldShowBlueScreenError();
+    console.log(showError);
+    if (!loading && showError) {
+      showBlueScreenError = true;
+      clearInterval(intervalId);
+    }
+  }, 1000);
 </script>
 
 <style>
@@ -51,6 +65,9 @@
 
 {#if loading}
   <LoadingScreen />
+{/if}
+{#if showBlueScreenError}
+  <BlueScreenError />
 {/if}
 <div class="container">
   <div class="screen" on:drop={handleDragDrop} ondragover="return false">
