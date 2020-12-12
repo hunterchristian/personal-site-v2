@@ -2,7 +2,7 @@
   .blue-screen-error {
     background-image: url('/images/0x000000D1.webp');
     background-size: cover;
-    z-index: 6;
+    z-index: 200;
     color: white;
     background-color: blue;
     position: fixed;
