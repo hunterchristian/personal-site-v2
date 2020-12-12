@@ -19,7 +19,7 @@
   .taskbar {
     position: absolute;
     display: flex;
-    z-index: 0;
+    z-index: 101;
     bottom: 0;
     left: 0;
     width: 100%;

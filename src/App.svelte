@@ -9,7 +9,7 @@
     e.preventDefault();
   }
   function shouldShowBlueScreenError() {
-    return Math.random() * 10 <= 1;
+    return Math.random() * 100 <= 5;
   }
 
   let loading = true;
@@ -23,7 +23,7 @@
       showBlueScreenError = true;
       clearInterval(intervalId);
     }
-  }, 1000);
+  }, 5000);
 </script>
 
 <style>
