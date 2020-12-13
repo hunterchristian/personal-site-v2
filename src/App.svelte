@@ -27,7 +27,7 @@
   let showBlueScreenError = false;
   const intervalId = setInterval(() => {
     let showError = shouldShowBlueScreenError();
-    if (!loading && showError && ENABLE_RANDOM_ERROR) {
+    if (showError && !loading && !showScreenSaver && ENABLE_RANDOM_ERROR) {
       showBlueScreenError = true;
       clearInterval(intervalId);
     }
