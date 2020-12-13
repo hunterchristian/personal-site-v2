@@ -4,6 +4,7 @@
   import Icon from './Icon.svelte';
   import LoadingScreen from './LoadingScreen.svelte';
   import Taskbar from './Taskbar.svelte';
+  import Windows from './Windows.svelte';
 
   function handleDragDrop(e) {
     e.preventDefault();
@@ -77,6 +78,7 @@
       imageUrl="../images/twitter-logo.png"
       startingX="2vh"
       startingY="80vh" />
+    <Windows />
     <Taskbar />
   </div>
 </div>

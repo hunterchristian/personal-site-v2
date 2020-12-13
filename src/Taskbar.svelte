@@ -1,7 +1,3 @@
-<script lang="ts">
-  import Windows from './Windows.svelte';
-</script>
-
 <style>
   .start-button-image {
     cursor: pointer;
@@ -43,7 +39,6 @@
   <div class="main-section">
     <div class="start-button-image" />
     <div class="start-menu-footer" />
-    <Windows />
   </div>
   <div class="quick-section" />
 </div>
