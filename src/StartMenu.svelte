@@ -69,6 +69,10 @@
     align-items: center;
     padding: 5px;
     font-size: 11px;
+
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
   }
 
   .start-menu .start-menu-body .start-menu-item > * {
@@ -85,6 +89,7 @@
 
   .start-menu .start-menu-body .start-menu-item .label {
     margin-left: 5px;
+    cursor: pointer;
   }
 
   .start-menu .start-menu-body .start-menu-item .label .intent {
@@ -368,18 +373,18 @@
           style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/21.ico')" />
         <div class="label">My Recent Documents</div>
       </div>
-      <div class="start-menu-item my-item">
+      <a class="start-menu-item my-item link" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/hunterhod">
         <div
           class="icon"
           style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/236.ico')" />
         <div class="label">My Pictures</div>
-      </div>
-      <div class="start-menu-item my-item">
+      </a>
+      <a class="start-menu-item my-item link" target="_blank" rel="noopener noreferrer" href="https://open.spotify.com/playlist/5bz6YDElV1p4B3MTwSKdea?si=pudOhXTYRFagLpMGCK1RRw">
         <div
           class="icon"
           style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/237.ico')" />
         <div class="label">My Music</div>
-      </div>
+      </a>
       <div class="start-menu-item my-item">
         <div
           class="icon"
