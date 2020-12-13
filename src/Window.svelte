@@ -1,10 +1,10 @@
 <script lang="ts">
   export let title = '';
-  export let xPos = 200;
-  export let yPos = 100;
-  export let zPos = 1;
-  export let width = 800;
-  export let height = 600;
+  export let xPos;
+  export let yPos;
+  export let zPos;
+  export let width;
+  export let height;
 
   let dragging = false;
   function handleDragStart(e: DragEvent) {
