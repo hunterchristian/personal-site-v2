@@ -1,5 +1,5 @@
 <script lang="ts">
-  import OpenUrl from './commands/OpenUrl';
+  import CreateNewWindow from './commands/CreateNewWindow';
 
   export let href: string;
   export let imageUrl: string;
@@ -17,7 +17,15 @@
   }
 
   function handleDblClick() {
-    new OpenUrl().execute({ url: 'https://twitter.com/HunterHodnett' });
+    //new OpenUrl().execute({ url: 'https://twitter.com/HunterHodnett' });
+    new CreateNewWindow().execute({
+      title: 'Mah window',
+      content: '<p>some more stuff</p>',
+      xPos: 300,
+      yPos: 200,
+      width: 800,
+      height: 600,
+    });
   }
 
   function handleDragStart(e: DragEvent) {

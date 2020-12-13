@@ -1,4 +1,9 @@
 <script lang="ts">
+  import BringWindowToTop from './commands/BringWindowToTop';
+  import UpdateWindowPosition from './commands/UpdateWindowPosition';
+  import UpdateWindowSize from './commands/UpdateWindowSize';
+
+  export let id;
   export let title = '';
   export let xPos;
   export let yPos;
@@ -28,6 +33,7 @@
   function handleDragEnd(e: DragEvent) {
     prevX = undefined;
     prevY = undefined;
+    new UpdateWindowPosition().execute({ id, xPos, yPos });
   }
 
   let prevXPos;
@@ -47,6 +53,8 @@
       window.innerHeight -
       document.getElementsByClassName('taskbar')[0].clientHeight;
     shouldMaximise = false;
+    new UpdateWindowPosition().execute({ id, xPos, yPos });
+    new UpdateWindowSize().execute({ id, width, height });
   }
   function resetWindow() {
     xPos = prevXPos;
@@ -54,6 +62,8 @@
     width = prevWidth;
     height = prevHeight;
     shouldMaximise = true;
+    new UpdateWindowPosition().execute({ id, xPos, yPos });
+    new UpdateWindowSize().execute({ id, width, height });
   }
   function handleMaximize() {
     if (shouldMaximise) {
@@ -61,6 +71,10 @@
     } else {
       resetWindow();
     }
+  }
+
+  function handleTitleBarClick() {
+    new BringWindowToTop().execute({ id });
   }
 </script>
 
@@ -77,7 +91,10 @@
   draggable="true"
   class="window"
   style={`width: ${width}px;height: ${height}px;top: ${yPos}px;left: ${xPos}px;z-index: ${zPos};`}>
-  <div class="title-bar" style={`cursor: ${dragging ? 'grabbing' : 'grab'};`}>
+  <div
+    on:click={handleTitleBarClick}
+    class="title-bar"
+    style={`cursor: ${dragging ? 'grabbing' : 'grab'};`}>
     <div class="title-bar-text">{title}</div>
     <div class="title-bar-controls">
       <button aria-label="Minimize" />

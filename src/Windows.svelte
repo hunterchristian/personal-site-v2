@@ -3,8 +3,8 @@
   import Window from './Window.svelte';
 </script>
 
-{#each $windows as { title, content, xPos, yPos, width, height }, i}
-  <Window {title} zPos={i} {xPos} {yPos} {width} {height}>
+{#each $windows as { id, title, content, xPos, yPos, width, height }, i}
+  <Window {id} {title} zPos={i} {xPos} {yPos} {width} {height}>
     {@html content}
   </Window>
 {/each}
