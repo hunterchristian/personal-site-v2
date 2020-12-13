@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fromEvent, empty, timer } from 'rxjs'
+  import { debounce, filter } from 'rxjs/operators';
   import 'xp.css/dist/XP.css';
   import {
     ENABLE_RANDOM_ERROR,
@@ -10,6 +12,7 @@
   import LoadingScreen from './LoadingScreen.svelte';
   import Taskbar from './Taskbar.svelte';
   import Windows from './Windows.svelte';
+  import ScreenSaver from './ScreenSaver.svelte'
 
   function handleDragDrop(e) {
     e.preventDefault();
@@ -29,6 +32,13 @@
       clearInterval(intervalId);
     }
   }, 5000);
+
+  let showScreenSaver = false;
+  fromEvent(document, 'mousemove')
+    .pipe(debounce(e => showScreenSaver ? empty() : timer(10000)))
+    .subscribe(() => {
+      showScreenSaver = !showScreenSaver;
+    });
 </script>
 
 <style>
@@ -73,6 +83,9 @@
 {/if}
 {#if showBlueScreenError}
   <BlueScreenError />
+{/if}
+{#if showScreenSaver}
+  <ScreenSaver />
 {/if}
 <div class="container">
   <div class="screen" on:drop={handleDragDrop} ondragover="return false">

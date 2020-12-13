@@ -27,6 +27,7 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
+    "rxjs": "^6.6.3",
     "sirv-cli": "^1.0.0",
     "uuid": "^8.3.2",
     "xp.css": "^0.2.3"
