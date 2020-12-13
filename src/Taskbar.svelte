@@ -1,3 +1,17 @@
+<script lang="ts">
+  import StartMenu from './StartMenu.svelte';
+
+  let showStartMenu = false;
+  function handleStartButtonClick(e: MouseEvent) {
+    e.stopPropagation();
+    showStartMenu = !showStartMenu;
+  }
+
+  document.onclick = function () {
+    showStartMenu = false;
+  };
+</script>
+
 <style>
   .start-button-image {
     cursor: pointer;
@@ -37,8 +51,9 @@
 
 <div class="taskbar">
   <div class="main-section">
-    <div class="start-button-image" />
+    <div class="start-button-image" on:click={handleStartButtonClick} />
     <div class="start-menu-footer" />
+    <StartMenu style={`display: ${showStartMenu ? 'block' : 'none'};`} />
   </div>
   <div class="quick-section" />
 </div>
