@@ -6,6 +6,7 @@
   export let iconDesc: string;
   export let startingX: string;
   export let startingY: string;
+  export let disableBorder = false;
 
   let xPos = startingX;
   let yPos = startingY;
@@ -17,7 +18,7 @@
   }
 
   function handleDblClick() {
-    new OpenUrl().execute({ url: 'https://twitter.com/HunterHodnett' });
+    new OpenUrl().execute({ url: href });
   }
 
   function handleDragStart(e: DragEvent) {
@@ -70,7 +71,10 @@
   on:dblclick={handleDblClick}
   on:dragstart={handleDragStart}
   on:dragend={handleDragEnd}
-  style="top:{yPos};left:{xPos};width:${width};height:${height}">
-  <img src={imageUrl} alt={iconDesc} />
+  style="top:{yPos};left:{xPos};">
+  <img
+    src={imageUrl}
+    alt={iconDesc}
+    style="border-radius: {disableBorder ? 'none' : '50%'};" />
   <span class="icon-desc">{iconDesc}</span>
 </a>

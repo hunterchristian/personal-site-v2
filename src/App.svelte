@@ -77,7 +77,20 @@
 <div class="container">
   <div class="screen" on:drop={handleDragDrop} ondragover="return false">
     <Icon
-      href="#"
+      href="https://github.com/hunterchristian"
+      iconDesc="My Github"
+      imageUrl="../images/github-logo.png"
+      startingX="2vh"
+      startingY="60vh" />
+    <Icon
+      href="https://www.youtube.com/channel/UCWelrUFMwotAxD_ia3Wk1LA"
+      iconDesc="Watch me"
+      imageUrl="../images/youtube-logo.webp"
+      startingX="2vh"
+      startingY="70vh" />
+    <Icon
+      disableBorder={true}
+      href="https://twitter.com/HunterHodnett"
       iconDesc="Follow me"
       imageUrl="../images/twitter-logo.png"
       startingX="2vh"
