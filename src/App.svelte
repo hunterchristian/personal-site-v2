@@ -12,18 +12,18 @@
     return Math.random() * 100 <= 5;
   }
 
-  let loading = true;
+  let loading = false;
   setTimeout(() => (loading = false), 3000);
 
   let showBlueScreenError = false;
-  const intervalId = setInterval(() => {
-    let showError = shouldShowBlueScreenError();
-    console.log(showError);
-    if (!loading && showError) {
-      showBlueScreenError = true;
-      clearInterval(intervalId);
-    }
-  }, 5000);
+  // const intervalId = setInterval(() => {
+  //   let showError = shouldShowBlueScreenError();
+  //   console.log(showError);
+  //   if (!loading && showError) {
+  //     showBlueScreenError = true;
+  //     clearInterval(intervalId);
+  //   }
+  // }, 5000);
 </script>
 
 <style>
