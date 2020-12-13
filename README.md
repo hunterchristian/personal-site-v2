@@ -1,3 +1,13 @@
+Credits:
+WindowsXP start menu CSS: https://codepen.io/brundolf/pen/wzrWdy
+WindowsXP CSS for windows and dialogs: https://botoxparty.github.io/XP.css/#window
+WindowsXP loading screen: https://codepen.io/pulkitsvm/pen/KWZEKW
+Screen saver: https://www.youtube.com/watch?v=oRL5durPleI&ab_channel=L-1011Widebody
+Windows 10 restart prank: https://www.youtube.com/watch?v=V4SsDwkE_sg&ab_channel=SOiSK
+
+
+----------------
+
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
 ---
