@@ -1,5 +1,10 @@
 <script lang="ts">
   import 'xp.css/dist/XP.css';
+  import {
+    ENABLE_RANDOM_ERROR,
+    ERROR_CHANCE_PERCENT,
+    SHOW_LOADING_SCREEN,
+  } from './appConfig';
   import BlueScreenError from './BlueScreenError.svelte';
   import Icon from './Icon.svelte';
   import LoadingScreen from './LoadingScreen.svelte';
@@ -10,21 +15,20 @@
     e.preventDefault();
   }
   function shouldShowBlueScreenError() {
-    return Math.random() * 100 <= 5;
+    return Math.random() * 100 <= ERROR_CHANCE_PERCENT;
   }
 
-  let loading = false;
+  let loading = SHOW_LOADING_SCREEN;
   setTimeout(() => (loading = false), 3000);
 
   let showBlueScreenError = false;
-  // const intervalId = setInterval(() => {
-  //   let showError = shouldShowBlueScreenError();
-  //   console.log(showError);
-  //   if (!loading && showError) {
-  //     showBlueScreenError = true;
-  //     clearInterval(intervalId);
-  //   }
-  // }, 5000);
+  const intervalId = setInterval(() => {
+    let showError = shouldShowBlueScreenError();
+    if (!loading && showError && ENABLE_RANDOM_ERROR) {
+      showBlueScreenError = true;
+      clearInterval(intervalId);
+    }
+  }, 5000);
 </script>
 
 <style>
