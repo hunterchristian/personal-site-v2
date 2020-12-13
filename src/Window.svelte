@@ -1,4 +1,5 @@
 <script lang="ts">
+  export let title = '';
   export let xPos = 200;
   export let yPos = 100;
   export let zPos = 1;
@@ -13,7 +14,6 @@
       'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
     e.dataTransfer.setDragImage(img, 0, 0);
   }
-
   let prevX;
   let prevY;
   function handleDrag(e: DragEvent) {
@@ -24,6 +24,43 @@
 
     prevX = e.pageX;
     prevY = e.pageY;
+  }
+  function handleDragEnd(e: DragEvent) {
+    prevX = undefined;
+    prevY = undefined;
+  }
+
+  let prevXPos;
+  let prevYPos;
+  let prevWidth;
+  let prevHeight;
+  let shouldMaximise = true;
+  function maximiseWindow() {
+    prevXPos = xPos;
+    prevYPos = yPos;
+    prevWidth = width;
+    prevHeight = height;
+    xPos = 0;
+    yPos = 0;
+    width = window.innerWidth;
+    height =
+      window.innerHeight -
+      document.getElementsByClassName('taskbar')[0].clientHeight;
+    shouldMaximise = false;
+  }
+  function resetWindow() {
+    xPos = prevXPos;
+    yPos = prevYPos;
+    width = prevWidth;
+    height = prevHeight;
+    shouldMaximise = true;
+  }
+  function handleMaximize() {
+    if (shouldMaximise) {
+      maximiseWindow();
+    } else {
+      resetWindow();
+    }
   }
 </script>
 
@@ -36,18 +73,19 @@
 <div
   on:dragstart={handleDragStart}
   on:drag={handleDrag}
+  on:dragend={handleDragEnd}
   draggable="true"
   class="window"
-  style={`width: ${width}px;height: ${height}px;top: ${yPos}px;left: ${xPos}px;z-index: ${zPos};cursor: ${dragging ? 'grabbing' : 'grab'}`}>
-  <div class="title-bar">
-    <div class="title-bar-text">A Window With Stuff In It</div>
+  style={`width: ${width}px;height: ${height}px;top: ${yPos}px;left: ${xPos}px;z-index: ${zPos};`}>
+  <div class="title-bar" style={`cursor: ${dragging ? 'grabbing' : 'grab'};`}>
+    <div class="title-bar-text">{title}</div>
     <div class="title-bar-controls">
       <button aria-label="Minimize" />
-      <button aria-label="Maximize" />
+      <button aria-label="Maximize" on:click={handleMaximize} />
       <button aria-label="Close" />
     </div>
   </div>
   <div class="window-body">
-    <p>There's so much room for activities!</p>
+    <slot />
   </div>
 </div>
