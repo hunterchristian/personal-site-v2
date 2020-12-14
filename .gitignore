@@ -2,3 +2,4 @@ node_modules/
 public/
 dist/
 .history/
+.DS_Store

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fromEvent, empty, timer } from 'rxjs'
+  import { fromEvent, empty, timer, of, merge } from 'rxjs'
   import { debounce, filter } from 'rxjs/operators';
   import 'xp.css/dist/XP.css';
   import {
@@ -7,6 +7,7 @@
     ERROR_CHANCE_PERCENT,
     SHOW_LOADING_SCREEN,
   } from './appConfig';
+  import isMobile from './util/isMobile'
   import BlueScreenError from './BlueScreenError.svelte';
   import Icon from './Icon.svelte';
   import LoadingScreen from './LoadingScreen.svelte';
@@ -24,6 +25,18 @@
   let loading = SHOW_LOADING_SCREEN;
   setTimeout(() => (loading = false), 3000);
 
+  let showScreenSaver = false;
+  // Screen saver doesn't work on mobile
+  if (!isMobile()) {
+    const mouseMoveStream = fromEvent(document, 'mousemove')
+      .pipe(debounce(e => showScreenSaver ? empty() : timer(30000)));
+    mouseMoveStream.subscribe(() => {
+      showScreenSaver = !showScreenSaver;
+    });
+    // Start the stream
+    document.dispatchEvent(new Event('mousemove'));
+  }
+
   let showBlueScreenError = false;
   const intervalId = setInterval(() => {
     let showError = shouldShowBlueScreenError();
@@ -32,13 +45,6 @@
       clearInterval(intervalId);
     }
   }, 5000);
-
-  let showScreenSaver = false;
-  fromEvent(document, 'mousemove')
-    .pipe(debounce(e => showScreenSaver ? empty() : timer(10000)))
-    .subscribe(() => {
-      showScreenSaver = !showScreenSaver;
-    });
 </script>
 
 <style>
@@ -84,7 +90,7 @@
 {#if showBlueScreenError}
   <BlueScreenError />
 {/if}
-{#if showScreenSaver}
+{#if showScreenSaver && !showBlueScreenError}
   <ScreenSaver />
 {/if}
 <div class="container">
@@ -94,20 +100,20 @@
       iconDesc="My Github"
       imageUrl="../images/github-logo.png"
       startingX="2vh"
-      startingY="60vh" />
+      startingY="55vh" />
     <Icon
       href="https://www.youtube.com/channel/UCWelrUFMwotAxD_ia3Wk1LA"
       iconDesc="Watch me"
       imageUrl="../images/youtube-logo.webp"
       startingX="2vh"
-      startingY="70vh" />
+      startingY="65vh" />
     <Icon
       disableBorder={true}
       href="https://twitter.com/HunterHodnett"
       iconDesc="Follow me"
       imageUrl="../images/twitter-logo.png"
       startingX="2vh"
-      startingY="80vh" />
+      startingY="75vh" />
     <Windows />
     <Taskbar />
   </div>
