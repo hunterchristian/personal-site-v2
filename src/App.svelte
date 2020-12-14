@@ -56,7 +56,6 @@
   .container {
     height: 100%;
     text-align: center;
-    line-height: 90vh;
   }
   .container .screen {
     width: 100%;
@@ -65,7 +64,6 @@
     display: inline-block;
     vertical-align: middle;
     text-align: left;
-    line-height: normal;
   }
 
   * {
@@ -100,20 +98,20 @@
       iconDesc="My Github"
       imageUrl="../images/github-logo.png"
       startingX="2vh"
-      startingY="55vh" />
+      startingY="50vh" />
     <Icon
       href="https://www.youtube.com/channel/UCWelrUFMwotAxD_ia3Wk1LA"
       iconDesc="Watch me"
       imageUrl="../images/youtube-logo.webp"
       startingX="2vh"
-      startingY="65vh" />
+      startingY="60vh" />
     <Icon
       disableBorder={true}
       href="https://twitter.com/HunterHodnett"
       iconDesc="Follow me"
       imageUrl="../images/twitter-logo.png"
       startingX="2vh"
-      startingY="75vh" />
+      startingY="70vh" />
     <Windows />
     <Taskbar />
   </div>

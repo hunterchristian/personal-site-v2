@@ -1,5 +1,6 @@
 <script lang="ts">
   import OpenUrl from './commands/OpenUrl';
+  import isMobile from './util/isMobile';
 
   export let href: string;
   export let imageUrl: string;
@@ -13,18 +14,21 @@
   let width = '5vh';
   let height = '5vh';
 
-  function handleTouch(event: Event) {
-    new OpenUrl().execute({ url: href });
-  }
   function handleClick(event: Event) {
     event.preventDefault();
+    if (isMobile()) {
+      new OpenUrl().execute({ url: href });
+    }
   }
+
   function handleDblClick() {
     new OpenUrl().execute({ url: href });
   }
+
   function handleDragStart(e: DragEvent) {
     e.dataTransfer.dropEffect = 'move';
   }
+
   function handleDragEnd(e: DragEvent) {
     xPos = `calc(${e.pageX}px - ${width} - 5px)`;
     yPos = `${e.pageY}px`;
@@ -67,7 +71,6 @@
 
 <a
   {href}
-  on:touch={handleTouch}
   on:click={handleClick}
   on:dblclick={handleDblClick}
   on:dragstart={handleDragStart}
