@@ -19,6 +19,7 @@ This project is hosted via Cloudflare Workers: https://developers.cloudflare.com
 - Write some code! The main file of the app is located in src/App.svelte
 
 # Deploying
+- Create your own Cloudflare Workers account and add a file to the root of the project called `wranger.toml`. This is a Cloudflare Workers configuration file that links this project to a Cloudflare Worker, which will host our app. Follow this guide to populate the contents of `wrangler.toml` and to create an account: https://developers.cloudflare.com/workers/learning/getting-started
 - Create a production-optimized verson of the application: `npm run build`
 - Deploy to Cloudflare Workers dev environment: `npm run publish:dev` _A URL to the dev environment will be printed to the console. Copy and paste it into a web browser, navigate to the site, and verify that your changes work correctly_
 - Deploy to Cloudflate Workers prod environment: `npm run publish: prod` _A URL to the prod environment will be printed to the console. Copy and paste it into a web browser, navigate to the site, and verify that your changes work correctly_
