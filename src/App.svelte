@@ -126,20 +126,20 @@
       iconDesc="Watch me"
       imageUrl="../images/youtube-logo.webp"
       startingX="2vh"
-      startingY="60vh" />
+      startingY="40vh" />
     <LinkIcon
       href="https://blog.hunterhodnett.dev/"
       iconDesc="Read me"
       imageUrl="../images/0.jpeg"
       startingX="2vh"
-      startingY="70vh" />
+      startingY="50vh" />
     <LinkIcon
       disableBorder={true}
       href="https://twitter.com/HunterHodnett"
       iconDesc="Follow me"
       imageUrl="../images/twitter-logo.png"
       startingX="2vh"
-      startingY="80vh" />
+      startingY="60vh" />
     <BrowserIcon startingX="calc(90vw - 40px)" startingY="55vh" />
     <Windows />
     <Taskbar on:shutdownButtonClick={handleShutdownButtonClick} />

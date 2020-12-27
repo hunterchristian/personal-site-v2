@@ -7,7 +7,7 @@
     "start": "sirv public",
     "validate": "svelte-check",
     "preview": "wrangler preview --watch",
-    "publish:dev": "wrangler publish",
+    "publish:dev": "npm run build && wrangler publish",
     "publish:prod": "wrangler publish --env production"
   },
   "devDependencies": {
