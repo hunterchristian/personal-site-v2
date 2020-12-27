@@ -1,21 +1,21 @@
 <script lang="ts">
-  import { fromEvent, empty, timer, of, merge } from 'rxjs'
-  import { debounce, filter } from 'rxjs/operators';
-  import 'xp.css/dist/XP.css';
+  import { empty, fromEvent, timer } from "rxjs";
+  import { debounce } from "rxjs/operators";
+  import "xp.css/dist/XP.css";
   import {
     ENABLE_RANDOM_ERROR,
     ERROR_CHANCE_PERCENT,
     SHOW_LOADING_SCREEN,
-  } from './appConfig';
-  import isMobile from './util/isMobile'
-  import BlueScreenError from './BlueScreenError.svelte';
-  import LinkIcon from './LinkIcon.svelte';
-  import BrowserIcon from './BrowserIcon.svelte';
-  import LoadingScreen from './LoadingScreen.svelte';
-  import Taskbar from './Taskbar.svelte';
-  import Windows from './Windows.svelte';
-  import ScreenSaver from './ScreenSaver.svelte';
-  import ShutdownScreen from './ShutdownScreen.svelte';
+  } from "./appConfig";
+  import BlueScreenError from "./BlueScreenError.svelte";
+  import BrowserIcon from "./BrowserIcon.svelte";
+  import LinkIcon from "./LinkIcon.svelte";
+  import LoadingScreen from "./LoadingScreen.svelte";
+  import ScreenSaver from "./ScreenSaver.svelte";
+  import ShutdownScreen from "./ShutdownScreen.svelte";
+  import Taskbar from "./Taskbar.svelte";
+  import isMobile from "./util/isMobile";
+  import Windows from "./Windows.svelte";
 
   function handleDragDrop(e) {
     e.preventDefault();
@@ -30,13 +30,14 @@
   let showScreenSaver = false;
   // Screen saver doesn't work on mobile
   if (!isMobile()) {
-    const mouseMoveStream = fromEvent(document, 'mousemove')
-      .pipe(debounce(e => showScreenSaver ? empty() : timer(30000)));
+    const mouseMoveStream = fromEvent(document, "mousemove").pipe(
+      debounce((e) => (showScreenSaver ? empty() : timer(30000)))
+    );
     mouseMoveStream.subscribe(() => {
       showScreenSaver = !showScreenSaver;
     });
     // Start the stream
-    document.dispatchEvent(new Event('mousemove'));
+    document.dispatchEvent(new Event("mousemove"));
   }
 
   let showBlueScreenError = false;
@@ -50,7 +51,7 @@
 
   function toggleFullScreen() {
     if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
+      document.documentElement.requestFullscreen();
     } else {
       if (document.exitFullscreen) {
         document.exitFullscreen();
@@ -68,7 +69,7 @@
 <style>
   .screen {
     position: relative;
-    background: url('../images/bliss.png') center/cover no-repeat #0c8dea;
+    background: url("../images/bliss.png") center/cover no-repeat #0c8dea;
   }
 
   .container {
@@ -115,11 +116,11 @@
 <div class="container">
   <div class="screen" on:drop={handleDragDrop} ondragover="return false">
     <LinkIcon
-      href="https://github.com/hunterchristian"
-      iconDesc="My Github"
+      href="https://github.com/hunterchristian/personal-site-v2"
+      iconDesc="Source Code"
       imageUrl="../images/github-logo.png"
       startingX="2vh"
-      startingY="50vh" />
+      startingY="5vh" />
     <LinkIcon
       href="https://www.youtube.com/channel/UCWelrUFMwotAxD_ia3Wk1LA"
       iconDesc="Watch me"
@@ -127,15 +128,19 @@
       startingX="2vh"
       startingY="60vh" />
     <LinkIcon
+      href="https://blog.hunterhodnett.dev/"
+      iconDesc="Read me"
+      imageUrl="../images/0.jpeg"
+      startingX="2vh"
+      startingY="70vh" />
+    <LinkIcon
       disableBorder={true}
       href="https://twitter.com/HunterHodnett"
       iconDesc="Follow me"
       imageUrl="../images/twitter-logo.png"
       startingX="2vh"
-      startingY="70vh" />
-    <BrowserIcon
-      startingX="calc(90vw - 40px)"
-      startingY="55vh" />
+      startingY="80vh" />
+    <BrowserIcon startingX="calc(90vw - 40px)" startingY="55vh" />
     <Windows />
     <Taskbar on:shutdownButtonClick={handleShutdownButtonClick} />
   </div>

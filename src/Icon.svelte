@@ -64,7 +64,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-width: 70px;
+    width: 70px;
     text-align: center;
   }
   a:hover {
