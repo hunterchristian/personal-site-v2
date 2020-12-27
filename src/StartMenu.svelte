@@ -350,6 +350,13 @@
     height: 100%;
     font-family: verdana;
   }
+
+  .start-menu-item:hover,
+  .start-menu-item .icon:hover,
+  .start-menu-item .intent:hover,
+  .start-menu-item .program:hover {
+    cursor: pointer;
+  }
 </style>
 
 <div class="start-menu" {style} on:click={handleStartMenuClick}>
@@ -364,7 +371,7 @@
       <div class="start-menu-item intent-item">
         <div
           class="icon"
-          style="background-image:url('https://dl.dropboxusercontent.com/u/19745853/Win%20XP%20icons/512.ico')" />
+          style="background-image:url('/images/ie6-logo.png')" />
         <div class="label">
           <div class="intent">Internet</div>
           <div class="program">Internet Explorer</div>
