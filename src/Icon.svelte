@@ -81,6 +81,20 @@
   .icon-desc.active {
     background: steelblue;
   }
+  /* ----------- iPhone X ----------- */
+  /* Portrait and Landscape */
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+    img {
+      width: 10vh;
+      height: 10vh;
+    }
+    a {
+      width: 100px;
+    }
+    .icon-desc {
+      font-size: x-large;
+    }
+  }
 </style>
 
 <a

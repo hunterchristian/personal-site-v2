@@ -25,7 +25,7 @@
   }
 
   let loading = SHOW_LOADING_SCREEN;
-  setTimeout(() => (loading = false), 3000);
+  setTimeout(() => (loading = false), 1500);
 
   let showScreenSaver = false;
   // Screen saver doesn't work on mobile
@@ -64,6 +64,9 @@
     showShutdownScreen = true;
     toggleFullScreen();
   }
+
+  const youtubeIconHeight = isMobile() ? "30vh" : "40vh";
+  const blogIconHeight = isMobile() ? "45vh" : "50vh";
 </script>
 
 <style>
@@ -126,13 +129,13 @@
       iconDesc="Watch me"
       imageUrl="../images/youtube-logo.webp"
       startingX="2vh"
-      startingY="40vh" />
+      startingY={youtubeIconHeight} />
     <LinkIcon
       href="https://blog.hunterhodnett.dev/"
       iconDesc="Read me"
       imageUrl="../images/0.jpeg"
       startingX="2vh"
-      startingY="50vh" />
+      startingY={blogIconHeight} />
     <LinkIcon
       disableBorder={true}
       href="https://twitter.com/HunterHodnett"
@@ -140,7 +143,7 @@
       imageUrl="../images/twitter-logo.png"
       startingX="2vh"
       startingY="60vh" />
-    <BrowserIcon startingX="calc(90vw - 40px)" startingY="55vh" />
+    <BrowserIcon startingX="calc(80vw - 40px)" startingY="55vh" />
     <Windows />
     <Taskbar on:shutdownButtonClick={handleShutdownButtonClick} />
   </div>
