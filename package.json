@@ -9,7 +9,7 @@
     "preview": "wrangler preview --watch",
     "publish:dev": "npm run build && wrangler publish",
     "publish:prod": "wrangler publish --env production",
-    "publish:all": "npm run publish:dev && npm run publish:prod"
+    "publish": "npm run publish:dev && npm run publish:prod"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",

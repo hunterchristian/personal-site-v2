@@ -17,6 +17,14 @@
   import isMobile from './util/isMobile';
   import Windows from './Windows.svelte';
 
+  let wWidth = '40vw';
+  let rWidth = '50vw';
+  let aWidth = '60vw';
+  if (isMobile()) {
+    wWidth = '5vw';
+    rWidth = '35vw';
+    aWidth = '65vw';
+  }
   function handleDragDrop(e) {
     e.preventDefault();
   }
@@ -64,8 +72,9 @@
     showShutdownScreen = true;
   }
 
-  const youtubeIconHeight = isMobile() ? '30vh' : '40vh';
-  const blogIconHeight = isMobile() ? '45vh' : '50vh';
+  const youtubeIconHeight = isMobile() ? '45vh' : '40vh';
+  const blogIconHeight = isMobile() ? '60vh' : '50vh';
+  const twitterIconHeight = isMobile() ? '75vh' : '60vh';
 </script>
 
 {#if loading}
@@ -104,12 +113,42 @@
       startingY={blogIconHeight}
     />
     <LinkIcon
+      href="https://shopwherewithal.com/pages/sizeset-builder"
+      iconDesc="Wherewithal SizeSets"
+      imageUrl="../images/logo_Icon_favicon_w-favicon.png"
+      startingX={wWidth}
+      startingY="25vh"
+      style={{
+        background: 'black',
+      }}
+    />
+    <LinkIcon
+      href="https://www.reddit.com/submit"
+      iconDesc="Reddit Create-A-Post"
+      imageUrl="../images/reddit.svg"
+      startingX={rWidth}
+      startingY="25vh"
+      style={{
+        background: 'black',
+      }}
+    />
+    <LinkIcon
+      href="https://music.amazon.com/artists/B077V1WN59/orville-peck"
+      iconDesc="Amazon Music Artist Experience"
+      imageUrl="../images/amu.png"
+      startingX={aWidth}
+      startingY="25vh"
+      style={{
+        background: 'black',
+      }}
+    />
+    <LinkIcon
       disableBorder={true}
       href="https://twitter.com/HunterHodnett"
       iconDesc="Follow me"
       imageUrl="../images/twitter-logo.png"
       startingX="2vh"
-      startingY="60vh"
+      startingY={twitterIconHeight}
     />
     <BrowserIcon startingX="calc(80vw - 40px)" startingY="55vh" />
     <Windows />

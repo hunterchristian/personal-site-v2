@@ -1,5 +1,5 @@
 <script lang="ts">
-  import isMobile from "./util/isMobile";
+  import isMobile from './util/isMobile';
 
   export let action: () => void;
   export let imageUrl: string;
@@ -7,11 +7,12 @@
   export let startingX: string;
   export let startingY: string;
   export let disableBorder = false;
+  export let style: any;
 
   let xPos = startingX;
   let yPos = startingY;
-  let width = "5vh";
-  let height = "5vh";
+  let width = '5vh';
+  let height = '5vh';
   let active = false;
 
   function handleClick(event: Event) {
@@ -31,7 +32,7 @@
   }
 
   function handleDragStart(e: DragEvent) {
-    e.dataTransfer.dropEffect = "move";
+    e.dataTransfer.dropEffect = 'move';
   }
 
   function handleDragEnd(e: DragEvent) {
@@ -40,10 +41,27 @@
   }
 </script>
 
+<a
+  href="#"
+  on:click={handleClick}
+  on:focusout={handleBlur}
+  on:dblclick={handleDblClick}
+  on:dragstart={handleDragStart}
+  on:dragend={handleDragEnd}
+  style="top:{yPos};left:{xPos};"
+>
+  <img
+    src={imageUrl}
+    alt={iconDesc}
+    style="border-radius: {disableBorder ? 'none' : '50%'};"
+  />
+  <span class="icon-desc {active ? 'active' : ''}">{iconDesc}</span>
+</a>
+
 <style>
   @font-face {
-    font-family: "ClassicDesktop";
-    src: url("/fonts/ClassicDesktop.ttf");
+    font-family: 'ClassicDesktop';
+    src: url('/fonts/ClassicDesktop.ttf');
   }
   .icon-desc {
     padding: 2px 4px;
@@ -81,9 +99,8 @@
   .icon-desc.active {
     background: steelblue;
   }
-  /* ----------- iPhone X ----------- */
-  /* Portrait and Landscape */
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+
+  @media (max-width: 812px) {
     img {
       width: 10vh;
       height: 10vh;
@@ -96,18 +113,3 @@
     }
   }
 </style>
-
-<a
-  href="#"
-  on:click={handleClick}
-  on:focusout={handleBlur}
-  on:dblclick={handleDblClick}
-  on:dragstart={handleDragStart}
-  on:dragend={handleDragEnd}
-  style="top:{yPos};left:{xPos};">
-  <img
-    src={imageUrl}
-    alt={iconDesc}
-    style="border-radius: {disableBorder ? 'none' : '50%'};" />
-  <span class="icon-desc {active ? 'active' : ''}">{iconDesc}</span>
-</a>
